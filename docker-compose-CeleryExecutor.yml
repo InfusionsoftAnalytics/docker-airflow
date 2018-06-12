@@ -10,10 +10,8 @@ services:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
-        # Uncomment these lines to persist data on the local filesystem.
-             - PGDATA=/var/lib/postgresql/data/pgdata
-        # volumes:
-             - ./pgdata:/var/lib/postgresql/data/pgdata
+            - PGDATA=/var/lib/postgresql/data/pgdata
+            - ./pgdata:/var/lib/postgresql/data/pgdata
 
     webserver:
         image: airflow:latest
@@ -24,7 +22,7 @@ services:
         depends_on:
             - postgres
             - redis
-            -scheduler
+            - scheduler
         environment:
             - LOAD_EX=n
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
@@ -35,8 +33,7 @@ services:
             - REDIS_PASSWORD=redispass
         volumes:
             - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
-            # Uncomment to include custom plugins
-             - ./plugins:/usr/local/airflow/plugins
+            - ./plugins:/usr/local/airflow/plugins
         ports:
             - "8080:8080"
         command: webserver
