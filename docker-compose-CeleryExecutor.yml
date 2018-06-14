@@ -32,7 +32,7 @@ services:
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
+            - ./dags:/usr/local/airflow/dags
             - ./plugins:/usr/local/airflow/plugins
         ports:
             - "8080:8080"
@@ -70,7 +70,7 @@ services:
             - postgres
             - redis
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
+            - ./dags:/usr/local/airflow/dags
             - ./plugins:/usr/local/airflow/plugins
         environment:
             - LOAD_EX=n
@@ -93,7 +93,7 @@ services:
             - redis
             - postgres
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
+            - ./dags:/usr/local/airflow/dags
             # Uncomment to include custom plugins
             - ./plugins:/usr/local/airflow/plugins
         environment:
