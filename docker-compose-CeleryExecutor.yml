@@ -105,11 +105,3 @@ services:
             - REDIS_PASSWORD=redispass
         command: worker
         #https://github.com/dennisobrien/airflow-docker-compose-example/blob/master/docker-compose.yml
-ZnIlNepKFf87WFwLbfzqDDho=
-            - EXECUTOR=Celery
-            - POSTGRES_USER=airflow
-            - POSTGRES_PASSWORD=airflow
-            - POSTGRES_DB=airflow
-            - REDIS_PASSWORD=redispass
-        command: worker
-        #https://github.com/dennisobrien/airflow-docker-compose-example/blob/master/docker-compose.yml
