@@ -10,10 +10,8 @@ services:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
-        # Uncomment these lines to persist data on the local filesystem.
-             - PGDATA=/var/lib/postgresql/data/pgdata
-        # volumes:
-             - ./pgdata:/var/lib/postgresql/data/pgdata
+            - PGDATA=/var/lib/postgresql/data/pgdata
+            - ./pgdata:/var/lib/postgresql/data/pgdata
 
     webserver:
 <<<<<<< HEAD
@@ -28,7 +26,7 @@ services:
         depends_on:
             - postgres
             - redis
-            -scheduler
+            - scheduler
         environment:
             - LOAD_EX=n
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
@@ -38,9 +36,8 @@ services:
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
-            # Uncomment to include custom plugins
-             - ./plugins:/usr/local/airflow/plugins
+            - ./dags:/usr/local/airflow/dags
+            - ./plugins:/usr/local/airflow/plugins
         ports:
             - "8080:8080"
         command: webserver
@@ -82,12 +79,10 @@ services:
 >>>>>>> circleci
         restart: always
         depends_on:
-            - webserver
             - postgres
             - redis
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
-            # Uncomment to include custom plugins
+            - ./dags:/usr/local/airflow/dags
             - ./plugins:/usr/local/airflow/plugins
         environment:
             - LOAD_EX=n
@@ -114,7 +109,7 @@ services:
             - redis
             - postgres
         volumes:
-            - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
+            - ./dags:/usr/local/airflow/dags
             # Uncomment to include custom plugins
             - ./plugins:/usr/local/airflow/plugins
         environment:
