@@ -22,11 +22,7 @@ services:
         depends_on:
             - postgres
             - redis
-<<<<<<< HEAD
             - scheduler
-=======
-            -scheduler
->>>>>>> circleci
         environment:
             - LOAD_EX=n
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
@@ -37,12 +33,7 @@ services:
             - REDIS_PASSWORD=redispass
         volumes:
             - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
-<<<<<<< HEAD
             - ./plugins:/usr/local/airflow/plugins
-=======
-            # Uncomment to include custom plugins
-             - ./plugins:/usr/local/airflow/plugins
->>>>>>> circleci
         ports:
             - "8080:8080"
         command: webserver
