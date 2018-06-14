@@ -67,12 +67,10 @@ services:
             dockerfile: Dockerfile
         restart: always
         depends_on:
-            - webserver
             - postgres
             - redis
         volumes:
             - ./dags:/Users/alex.fournier/dev/docker_airflow/dags
-            # Uncomment to include custom plugins
             - ./plugins:/usr/local/airflow/plugins
         environment:
             - LOAD_EX=n
