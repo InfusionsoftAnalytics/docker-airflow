@@ -77,8 +77,11 @@ COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 
 RUN chown -R airflow: ${AIRFLOW_HOME}
 
+RUN apt-get update
+RUN apt-get install -y git
+
 EXPOSE 8080 5555 8793
 
-USER airflow
+USER root
 WORKDIR ${AIRFLOW_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
